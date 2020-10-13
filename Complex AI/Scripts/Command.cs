@@ -10,7 +10,7 @@ namespace CommandPattern
     protected float moveDistance = 1f;
     public abstract void Execute(Transform boxTrans, Command command);
     public abstract void Execute(Transform boxTrans, Rigidbody2D rb, Command command);
-    public abstract void Execute(Transform boxTrans, Transform location, float speed, Command command);
+    public abstract void Execute(Transform boxTrans, Vector2 location, float speed, Command command);
 
         //Undo an old command
         public virtual void Undo(Transform boxTrans) { }
@@ -28,8 +28,7 @@ public class moveLeft : Command
         {
             
         }
-
-        public override void Execute(Transform boxTrans, Transform location, float speed, Command command)
+        public override void Execute(Transform boxTrans, Vector2 location, float speed, Command command)
         {
 
         }
@@ -44,7 +43,7 @@ public class moveRight : Command
         {
 
         }
-        public override void Execute(Transform boxTrans, Transform location, float speed, Command command)
+        public override void Execute(Transform boxTrans, Vector2 location, float speed, Command command)
         {
 
         }
@@ -59,7 +58,7 @@ public class moveRight : Command
         {
 
         }
-        public override void Execute(Transform boxTrans, Transform location, float speed, Command command)
+        public override void Execute(Transform boxTrans, Vector2 location, float speed, Command command)
         {
 
         }
@@ -76,7 +75,7 @@ public class moveRight : Command
             rb.AddForce(new Vector2(0f, 100f));
         }
 
-        public override void Execute(Transform boxTrans, Transform location, float speed, Command command)
+        public override void Execute(Transform boxTrans, Vector2 location, float speed, Command command)
         {
 
         }
@@ -91,9 +90,9 @@ public class moveRight : Command
         {
 
         }
-        public override void Execute(Transform boxTrans, Transform location, float speed, Command command)
+        public override void Execute(Transform boxTrans, Vector2 location, float speed, Command command)
         {
-            Vector2.MoveTowards(boxTrans.position, location.position, speed * Time.deltaTime);
+            Vector2.MoveTowards(boxTrans.position, location, speed * Time.deltaTime);
         }
     }
 
